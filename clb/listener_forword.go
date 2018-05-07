@@ -80,3 +80,34 @@ func (client *Client) CreateForwardLBFourthLayerListeners(args *CreateForwardLBF
 	}
 	return response, nil
 }
+
+type DeleteForwardLBListenerArgs struct {
+	LoadBalancerId string   `qcloud_arg:"loadBalancerId,required"`
+	ListenerId     string `qcloud_arg:"listenerId,required"`
+}
+
+type DeleteForwardLBListenerResponse struct {
+	Response
+	RequestId int `json:"requestId"`
+}
+
+func (response DeleteForwardLBListenerResponse) Id() int {
+	return response.RequestId
+}
+
+func (client *Client) DeleteForwardLBListener(LoadBalancerId string, ListenerId string) (
+	*DeleteForwardLBListenerResponse,
+	error,
+) {
+	response := &DeleteForwardLBListenerResponse{}
+	err := client.Invoke("DeleteForwardLBListener", &DeleteForwardLBListenerArgs{
+		LoadBalancerId: LoadBalancerId,
+		ListenerId: ListenerId,
+	}, response)
+
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
+}
