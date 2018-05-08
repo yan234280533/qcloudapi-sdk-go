@@ -17,13 +17,6 @@ type ForwardLBBackendsData struct {
 	LoadBalancerPort int    `json:"loadBalancerPort"`
 	Protocol         int    `json:"protocol"`
 	ProtocolType     string `json:"protocolType"`
-	Rules            []ForwardLBBackendsRule `json:"rules"`
-}
-
-type ForwardLBBackendsRule struct {
-	Domain     string `json:"domain"`
-	LocationID string `json:"locationId"`
-	URL        string `json:"url"`
 	Backends   []ForwardLBBackendsInfo`json:"backends"`
 }
 
