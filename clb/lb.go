@@ -84,7 +84,15 @@ type CreateLoadBalancerArgs struct {
 	ProjectId        *int    `qcloud_arg:"projectId"`
 	Number           *int    `qcloud_arg:"number"`
 	Special          *string `qcloud_arg:"special"`
+	InternetAccessible    InternetAccessibleStruct `qcloud_arg:"internetAccessible"`
 }
+
+type InternetAccessibleStruct struct {
+	InternetChargeType       string `qcloud_arg:"internetChargeType"`
+	InternetMaxBandwidthOut  int    `qcloud_arg:"internetMaxBandwidthOut"`
+}
+
+//"internetAccessible":{"internetChargeType":"TRAFFIC_POSTPAID_BY_HOUR","internetMaxBandwidthOut":3}
 
 type CreateLoadBalancerResponse struct {
 	Response

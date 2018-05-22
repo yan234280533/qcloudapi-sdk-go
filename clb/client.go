@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	CLBHost = "lb.api.qcloud.com"
+	CLBHost = "lb.api.tce.fsphere.cn"
 	CLBPath = "/v2/index.php"
 )
 
