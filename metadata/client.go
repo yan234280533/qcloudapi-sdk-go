@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"net/url"
 	"time"
+	"os"
 )
 
 type Request struct {
@@ -124,7 +125,11 @@ func (m *MetaDataClient) Url() (string, error) {
 	if m.resource == "" {
 		return "", errors.New("the resource you want to visit must not be nil!")
 	}
-	return fmt.Sprintf("%s/%s", ENDPOINT, m.resource), nil
+	url := os.Getenv("QCLOUD_METADATA_URL")
+	if url == ""{
+		return fmt.Sprintf("%s/%s", ENDPOINT, m.resource), nil
+	}
+	return fmt.Sprintf("%s/%s", url, m.resource), nil
 }
 
 func (m *MetaDataClient) send() (string, error) {
