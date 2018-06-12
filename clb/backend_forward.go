@@ -104,14 +104,14 @@ func (response DeregisterInstancesFromForwardLBFourthListenerResponse) Id() int 
 	return response.RequestId
 }
 
-func (client *Client) DeregisterInstancesFromForwardLBFourthListener(LoadBalancerId string, listenId string,InstanceIds []string) (
+func (client *Client) DeregisterInstancesFromForwardLBFourthListener(LoadBalancerId string, listenId string,InstanceIds []string,port int) (
 	*DeregisterInstancesFromForwardLBFourthListenerResponse,
 	error,
 ) {
 
 	backends := []ForwardDeregisterInstances{}
 	for _, instanceId := range InstanceIds {
-		backends = append(backends, ForwardDeregisterInstances{InstanceId: instanceId})
+		backends = append(backends, ForwardDeregisterInstances{InstanceId: instanceId,Port:&port})
 	}
 
 	args := &DeregisterInstancesFromForwardLBFourthListenerArgs{
